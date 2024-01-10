@@ -1,8 +1,13 @@
 {
   "extends": "./tsconfig/nextjs.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }]
+    "baseUrl": ".", // This must be specified if "paths" is specified
+    "paths": { // Relative to "baseUrl"
+      "components": ["components/*"],
+      "utils": ["lib/utils"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "plugins": [{ "name": "next" }, { "name": "headingAnalyzer" }]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "etc/**/*.ts", "ui/**/*"],
   "exclude": ["node_modules"]
 }
