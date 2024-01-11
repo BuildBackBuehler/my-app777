@@ -58,13 +58,6 @@ export type ObjectField<
   };
 };
 
-// considering creating a field that'll enable me to have styles customizable this field. Hopefully it can be auto-filled based on the defaultProps. I'd like if there was a selector associated w/ each stylizer (i.e., 1 for w-4, 2 for h-6, 3 for transition-duration, etc.)
-// export type ClassField<
-//   Props extends { [key: string]: any } = { [key: string]: any }
-//   > = BaseField & {
-//     type: "class";
-    
-
 // DEPRECATED
 export type Adaptor<
   AdaptorParams = {},
@@ -112,6 +105,13 @@ export type CustomField<
   }) => ReactElement;
 };
 
+export type Utility<
+  Props extends { [key: string]: any } = { [key: string]: any }
+> = BaseField & {
+  type: "utility";
+
+};
+
 export type Field<
   Props extends { [key: string]: any } = { [key: string]: any }
 > =
@@ -124,7 +124,9 @@ export type Field<
   | ObjectField<Props>
   | ExternalField<Props>
   | ExternalFieldWithAdaptor<Props>
+  | Utility
   | CustomField;
+  
 
 export type DefaultRootProps = {
   title?: string;
